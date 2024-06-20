@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers;
 
-abstract class Controller
-{
-// app/Http/Controllers/ProductsController.php
-
-namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
     public function index()
     {
+        // Logic to fetch products and return a view
         $products = [
             ['name' => 'Laptop', 'price' => 60000],
             ['name' => 'Smartphone', 'price' => 40000], 
@@ -35,9 +30,13 @@ class ProductsController extends Controller
 
         return view('products.index', ['products' => $products]);
     }
-}
+    public function show($id)
+    {
+        // Logic to fetch a specific product by ID and return a view
+        $product = ['id' => $id, 'name' => 'Product Name', 'price' => 100];
 
+        return view('products.show', ['product' => $product]);
+    }
 
-
-
+    // Other controller actions (e.g., store, update, delete) can be defined as needed
 }
